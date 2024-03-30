@@ -6,5 +6,8 @@ This repository contains write-ups to some of the challenges I solved from the p
 * rsa_oracle (300 points) - [solution](cryptography/rsa_oracle/) - [challenge](https://play.picoctf.org/practice/challenge/422)
 * flag_printer (500 points) - [solution](cryptography/flag_printer/) - [challenge](https://play.picoctf.org/practice/challenge/417)
 
+## Binary Exploitation
+* babygame03 (400 points) - [solution](binary_exploitation/babygame03/) - [challenge](https://play.picoctf.org/practice/challenge/446)
+
 ## General skills
 * SansAlpha (400 points) - [solution](general_skills/SansAlpha/) - [challenge](https://play.picoctf.org/practice/challenge/436)
