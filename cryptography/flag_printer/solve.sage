@@ -1,4 +1,4 @@
-import numpy as np
+import multiprocessing as mp
 
 p = 7514777789
 
@@ -9,7 +9,6 @@ for line in open('encoded.txt', 'r').read().strip().split('\n'):
     X.append(int(x))
     Y.append(int(y))
 
-points = list(zip(X, Y))
 K = GF(p)
 R = PolynomialRing(K, 'x')
 
@@ -19,12 +18,6 @@ def compZ(X):
     for xk in X:
         Z *= (x-xk)
     return Z
-
-def compY(X, Y, Z):
-    Y = [y/Z(x) for x, y in zip(X, Y)]
-    return Y
-
-import multiprocessing as mp
 
 def comp(X, Y, Xother):
     Z = compZ(Xother)

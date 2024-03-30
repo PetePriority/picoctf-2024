@@ -18,9 +18,9 @@ Because of the special form of the matrix, however, this is not a generic system
 $$p(x) = a_0 + a_1x + \ldots a_nx^n$$
 of degree $n$, such that $p(x_i) = y_i$. The coefficients $a_i$ then are just the components of the solution $p$ to $Ap=y$.
 
-There are algorithms to compute the coefficients given the pairs $(x_i, y_i)$ but the complexity is still $O(n^2)$ and would take too long to compute.
+There are algorithms (see [Lagrange polynomial](https://en.wikipedia.org/wiki/Lagrange_polynomial), [Newton polynomial](https://en.wikipedia.org/wiki/Newton_polynomial)) to compute the coefficients given the pairs $(x_i, y_i)$. They look promising at first, since we have the special case of a fixed interval between the nodes $x_i$, but the complexity is still $O(n^2)$ and would just take too long to compute.
 
-However, we can use the following [ansatz](https://mathoverflow.net/a/458091) and apply the divide and conquer method of the FFT algorithm to reduce the complexity further to $O(n\log n)$.
+However, we can use the following [ansatz](https://mathoverflow.net/a/458091) and apply the divide and conquer method of the FFT algorithm to reduce the complexity further to $O(n\log^2 n)$.
 
 Let $m = \lfloor n/2\rfloor$ (n/2 rounded down) and define the polynomials
 $$Z_1(x) = \Pi_{k=0}^m (x-x_k) \quad\text{and}\quad Z_2(x) = \Pi_{k=m+1}^n (x-x_k).$$
