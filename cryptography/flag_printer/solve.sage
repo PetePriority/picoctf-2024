@@ -26,15 +26,6 @@ def compY(X, Y, Z):
 
 import multiprocessing as mp
 
-
-class ZEvaluator:
-    def __init__(self, Z):
-        self.Z = Z
-
-    def __call__(self, point):
-        x, y = point
-        return y/self.Z(x)
-
 def comp(X, Y, Xother):
     Z = compZ(Xother)
     Y = [y/Z(x) for x, y in zip(X, Y)]
@@ -42,8 +33,9 @@ def comp(X, Y, Xother):
 
 def solve(X, Y):
     n = len(Y)
-    print("                                  Solving for", n, "points ")
+    print("Solving for", n, "points...")
 
+    # just use lagrange interpolation if the degree is small enough
     if n <= 10:
         return R.lagrange_polynomial(list(zip(X, Y)))
 
@@ -54,6 +46,7 @@ def solve(X, Y):
     X2 = X[nhalf:]
     Y2 = Y[nhalf:]
 
+    # parallelize the computation of the two halves
     if nhalf > 10000:
         with mp.Pool(2) as pool:
             result1 = pool.apply_async(comp, (X1, Y1, X2))
@@ -65,9 +58,11 @@ def solve(X, Y):
         Y1, Z2 = comp(X1, Y1, X2)
         Y2, Z1 = comp(X2, Y2, X1)
 
+    # solve recursively
     f1 = solve(X1, Y1)
     f2 = solve(X2, Y2)
 
+    # put it back together
     return f1*Z2 + f2*Z1
 
 def test():
