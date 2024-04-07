@@ -1,0 +1,4 @@
+build
+.ipynb_checkpoints
+*.bmp
+*.pdf

@@ -1,3 +1,5 @@
+**Update**: [flintlib](flintlib.org)'s [nmod_poly_interpolate_nmod_vec_fast](https://flintlib.org/doc/nmod_poly.html#c.nmod_poly_interpolate_nmod_vec_fast) solves this interpolation problem in about 25 seconds. The algorithms used can be found in chapter 10 of [Modern Computer Algebra](https://www.cambridge.org/core/books/modern-computer-algebra/DB3563D4013401734851CF683D2F03F0). I have rewritten the solution with the algorithms in sage [here](solve_fast.ipynb). The improved solution now only takes about 1 minute to compute.
+
 We are given a file containing $n+1=1769611$ pairs of integer pairs $(x_i.y_i)$ and a python script called `flag_printer.py`.
 
 The python script loads the pairs of points and tries to solve the linear system of equations
